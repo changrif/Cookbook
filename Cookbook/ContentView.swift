@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            MealList()
+            MealList(viewModel: .init(.dessert))
             Text("Choose a recipe")
                 .font(.largeTitle)
         }

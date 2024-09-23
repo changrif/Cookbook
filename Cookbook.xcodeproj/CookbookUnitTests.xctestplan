@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "BDB93922-5AAB-4FEF-AFCE-7FF9568EA4BB",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Cookbook.xcodeproj",
+      "identifier" : "4E2106422C98DB3F006215F9",
+      "name" : "Cookbook"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Cookbook.xcodeproj",
+        "identifier" : "4E2106522C98DB41006215F9",
+        "name" : "CookbookTests"
+      }
+    }
+  ],
+  "version" : 1
+}

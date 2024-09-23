@@ -8,19 +8,11 @@
 import SwiftUI
 
 struct MealDetail: View {
-    enum LoadingState {
-        case loading
-        case complete(Meal)
-        case error
-    }
-    
-    @State private var state: LoadingState = .loading
-    
-    let id: String
-    
+    @StateObject var viewModel: MealDetailViewModel
+        
     var body: some View {
-        Group {
-            switch state {
+        ZStack {
+            switch viewModel.state {
             case .loading:
                 ProgressView()
             case .error:
@@ -29,7 +21,9 @@ struct MealDetail: View {
                 Content(meal: meal)
             }
         }
-        .padding()
+        .task {
+            await viewModel.load()
+        }
     }
     
     struct Content: View {
@@ -41,10 +35,10 @@ struct MealDetail: View {
                     instructions
                     ingredients
                 }
+                .padding()
             }
-            .ignoresSafeArea()
             .navigationTitle(meal.name)
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
         }
         
         @ViewBuilder

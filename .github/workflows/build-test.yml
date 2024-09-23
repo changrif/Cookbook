@@ -1,0 +1,22 @@
+name: Build and Test
+on: push
+jobs:
+  Build-Test:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and Test
+        run: |
+          /usr/bin/xcodebuild test \
+            -project "Cookbook.xcodeproj" \
+            -scheme "Cookbook" \
+            -testPlan  "CookbookUnitTests" \
+            -destination "platform=iOS Simulator,name=iPhone 15" \
+            -resultBundlePath TestResults-${{ github.run_number }}
+      - name: Display and Upload Test Results
+        uses: kishikawakatsumi/xcresulttool@v1
+        if: success()
+        with:
+          path: "TestResults-${{ github.run_number }}.xcresult"
+          show-passed-tests: false
+          show-code-coverage: false

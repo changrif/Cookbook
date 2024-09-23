@@ -8,18 +8,11 @@
 import SwiftUI
 
 struct MealList: View {
+    @StateObject var viewModel: MealListViewModel
     
-    enum LoadingState {
-        case loading
-        case complete([MealListItem])
-        case error
-    }
-    
-    @State private var state: LoadingState = .loading
-        
     var body: some View {
-        Group {
-            switch state {
+        ZStack {
+            switch viewModel.state {
             case .loading:
                 ProgressView()
             case .error:
@@ -28,7 +21,9 @@ struct MealList: View {
                 Content(items: items)
             }
         }
-        .padding()
+        .task {
+            await viewModel.load()
+        }
     }
     
     struct Content: View {
@@ -38,7 +33,7 @@ struct MealList: View {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        MealDetail(id: item.id)
+                        MealDetail(viewModel: .init(item.id))
                     } label: {
                         Text(item.name)
                     }
