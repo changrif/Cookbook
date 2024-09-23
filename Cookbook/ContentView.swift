@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    typealias Localization = LocalizedContent.ContentView
+    
     var body: some View {
         NavigationView {
             MealList(viewModel: .init(.dessert))
-            Text("Choose a recipe")
+            Text(Localization.chooseARecipe)
                 .font(.largeTitle)
         }
     }

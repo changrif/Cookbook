@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MealDetail: View {
+    typealias Localization = LocalizedContent.MealDetail
+    
     @StateObject var viewModel: MealDetailViewModel
         
     var body: some View {
@@ -16,7 +18,7 @@ struct MealDetail: View {
             case .loading:
                 ProgressView()
             case .error:
-                Text("Something went wrong.")
+                Text(LocalizedContent.Common.somethingWentWrong)
             case .complete(let meal):
                 Content(meal: meal)
             }
@@ -53,7 +55,7 @@ struct MealDetail: View {
         var ingredients: some View {
             if !meal.ingredients.isEmpty {
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Ingredients")
+                    Text(Localization.ingredients)
                         .font(.title)
                     
                     VStack(alignment: .leading) {
@@ -63,6 +65,7 @@ struct MealDetail: View {
                                 Spacer()
                                 Text(ingredient.measure)
                             }
+                            .accessibilityElement(children: .combine)
                             
                             if meal.ingredients.last?.id != ingredient.id {
                                 Divider()

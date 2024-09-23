@@ -32,6 +32,8 @@
 		4E27C8522CA0C8080024DEE1 /* StubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27C8512CA0C8080024DEE1 /* StubError.swift */; };
 		4E27C8542CA0D3680024DEE1 /* StubMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27C8532CA0D3680024DEE1 /* StubMeal.swift */; };
 		4E27C8562CA0D3A00024DEE1 /* StubMealListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27C8552CA0D3A00024DEE1 /* StubMealListItem.swift */; };
+		4E27C85C2CA10A0F0024DEE1 /* LocalizedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27C85B2CA10A0F0024DEE1 /* LocalizedContent.swift */; };
+		4E27C85E2CA11D1A0024DEE1 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27C85D2CA11D1A0024DEE1 /* PreviewHelpers.swift */; };
 		4E713F402C9DF814002B8550 /* MealDBEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E713F3F2C9DF814002B8550 /* MealDBEndpoint.swift */; };
 		4E713F4A2C9F4DF8002B8550 /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E713F492C9F4DF8002B8550 /* MealListViewModel.swift */; };
 		4E713F4C2C9F4E01002B8550 /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E713F4B2C9F4E01002B8550 /* MealDetailViewModel.swift */; };
@@ -85,6 +87,8 @@
 		4E27C8532CA0D3680024DEE1 /* StubMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMeal.swift; sourceTree = "<group>"; };
 		4E27C8552CA0D3A00024DEE1 /* StubMealListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMealListItem.swift; sourceTree = "<group>"; };
 		4E27C85A2CA0EA4C0024DEE1 /* CookbookUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = CookbookUnitTests.xctestplan; path = Cookbook.xcodeproj/CookbookUnitTests.xctestplan; sourceTree = "<group>"; };
+		4E27C85B2CA10A0F0024DEE1 /* LocalizedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedContent.swift; sourceTree = "<group>"; };
+		4E27C85D2CA11D1A0024DEE1 /* PreviewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
 		4E713F3F2C9DF814002B8550 /* MealDBEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDBEndpoint.swift; sourceTree = "<group>"; };
 		4E713F492C9F4DF8002B8550 /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
 		4E713F4B2C9F4E01002B8550 /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 			children = (
 				4E2106462C98DB3F006215F9 /* CookbookApp.swift */,
 				4E2106482C98DB3F006215F9 /* ContentView.swift */,
+				4E27C85B2CA10A0F0024DEE1 /* LocalizedContent.swift */,
 				4E21064A2C98DB41006215F9 /* Assets.xcassets */,
 				4E21067A2C9B6A1C006215F9 /* Models */,
 				4E2106712C9B14DE006215F9 /* Networking */,
@@ -155,8 +160,9 @@
 		4E21064C2C98DB41006215F9 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				4E2106812C9B6C37006215F9 /* Models */,
+				4E27C85D2CA11D1A0024DEE1 /* PreviewHelpers.swift */,
 				4E21064D2C98DB41006215F9 /* Preview Assets.xcassets */,
+				4E2106812C9B6C37006215F9 /* Models */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 				4E21067F2C9B6BA1006215F9 /* MealDetail.swift in Sources */,
 				4E2106852C9B6D81006215F9 /* MealList.swift in Sources */,
 				4E21067C2C9B6A3A006215F9 /* Meal.swift in Sources */,
+				4E27C85E2CA11D1A0024DEE1 /* PreviewHelpers.swift in Sources */,
 				4E2106932C9C6BDE006215F9 /* MealService.swift in Sources */,
 				4E713F4C2C9F4E01002B8550 /* MealDetailViewModel.swift in Sources */,
 				4E21068C2C9B9A09006215F9 /* PreviewMealListItem.swift in Sources */,
@@ -467,6 +474,7 @@
 				4E713F402C9DF814002B8550 /* MealDBEndpoint.swift in Sources */,
 				4E2106742C9B1692006215F9 /* NetworkClient.swift in Sources */,
 				4E2106792C9B1A4C006215F9 /* MealDetailDTO.swift in Sources */,
+				4E27C85C2CA10A0F0024DEE1 /* LocalizedContent.swift in Sources */,
 				4E713F4E2CA060D6002B8550 /* MealCategory.swift in Sources */,
 				4E713F4A2C9F4DF8002B8550 /* MealListViewModel.swift in Sources */,
 			);

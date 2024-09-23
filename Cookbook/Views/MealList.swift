@@ -16,9 +16,12 @@ struct MealList: View {
             case .loading:
                 ProgressView()
             case .error:
-                Text("Something went wrong.")
+                Text(LocalizedContent.Common.somethingWentWrong)
             case .complete(let items):
-                Content(items: items)
+                Content(
+                    category: viewModel.category.name,
+                    items: items
+                )
             }
         }
         .task {
@@ -27,6 +30,7 @@ struct MealList: View {
     }
     
     struct Content: View {
+        let category: String
         let items: [MealListItem]
         
         var body: some View {
@@ -39,7 +43,7 @@ struct MealList: View {
                     }
                 }
             }
-            .navigationTitle("Desserts")
+            .navigationTitle(category)
             .navigationBarTitleDisplayMode(.large)
         }
     }
@@ -48,8 +52,11 @@ struct MealList: View {
 struct MealList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MealList.Content(items: .preview)
-                .padding()
+            MealList.Content(
+                category: "Dessert",
+                items: .preview
+            )
+            .padding()
         }
     }
 }

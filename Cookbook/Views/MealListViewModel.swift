@@ -31,6 +31,13 @@ class MealListViewModel: ObservableObject {
     func load() async {
         state = .loading
         do {
+            #if DEBUG
+            guard !isPreview else {
+                state = .complete(.preview)
+                return
+            }
+            #endif
+            
             let list = try await service.mealList(for: category.name)
             state = .complete(list)
         } catch {
