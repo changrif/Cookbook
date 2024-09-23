@@ -49,14 +49,12 @@ struct MealList: View {
     }
 }
 
-struct MealList_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            MealList.Content(
-                category: "Dessert",
-                items: .preview
-            )
-            .padding()
-        }
+#Preview {
+    NavigationView {
+        MealList.Content(
+            category: "Dessert",
+            items: .preview
+        )
+        .padding()
     }
 }

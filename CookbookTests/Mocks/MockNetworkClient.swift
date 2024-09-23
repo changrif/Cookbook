@@ -8,11 +8,18 @@
 import Foundation
 @testable import Cookbook
 
-struct MockNetworkClient: NetworkClient {
-    
-    let mockFetchData: (URLRequest) throws -> (Data, URLResponse)
-    
+final actor MockNetworkClient: NetworkClient {
+
+    let mockFetchData: @Sendable () throws -> (Data, URLResponse)
+    var urlRequest: URLRequest?
+
+    init(mockFetchData: @escaping @Sendable () throws -> (Data, URLResponse), urlRequest: URLRequest? = nil) {
+        self.mockFetchData = mockFetchData
+        self.urlRequest = urlRequest
+    }
+
     func fetchData(for request: URLRequest) async throws -> (Data, URLResponse) {
-        try mockFetchData(request)
+        urlRequest = request
+        return try mockFetchData()
     }
 }

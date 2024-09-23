@@ -13,9 +13,7 @@ final class MealServiceTests: XCTestCase {
     // MARK: - Meal List
     
     func test_mealList() async throws {
-        var urlRequest: URLRequest?
         let client = MockNetworkClient {
-            urlRequest = $0
             return (
                 Data(
                 """
@@ -40,6 +38,7 @@ final class MealServiceTests: XCTestCase {
         let actual = try await service.mealList(for: "Dessert")
         
         // Validate URL Request
+        let urlRequest = await client.urlRequest
         XCTAssertEqual(urlRequest?.httpMethod, "GET")
         XCTAssertEqual(urlRequest?.value(forHTTPHeaderField: "Content-Type"), "application/json")
         XCTAssertEqual(urlRequest?.url, URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert")!)
@@ -53,7 +52,7 @@ final class MealServiceTests: XCTestCase {
     }
     
     func test_mealList_failedToFetchData() async throws {
-        let client = MockNetworkClient { _ in throw StubError() }
+        let client = MockNetworkClient { throw StubError() }
         let service = MealService(client: client)
         
         // Validate Error
@@ -67,7 +66,7 @@ final class MealServiceTests: XCTestCase {
     }
     
     func test_mealList_failedToDecodeResponse() async throws {
-        let client = MockNetworkClient { _ in (Data(), HTTPURLResponse()) }
+        let client = MockNetworkClient { (Data(), HTTPURLResponse()) }
         let service = MealService(client: client)
         
         // Validate Error
@@ -83,9 +82,7 @@ final class MealServiceTests: XCTestCase {
     // MARK: - Meal
     
     func test_meal() async throws {
-        var urlRequest: URLRequest?
         let client = MockNetworkClient {
-            urlRequest = $0
             return (
                 Data(
                 """
@@ -147,6 +144,7 @@ final class MealServiceTests: XCTestCase {
         let actual = try await service.meal(from: "0")
         
         // Validate URL Request
+        let urlRequest = await client.urlRequest
         XCTAssertEqual(urlRequest?.httpMethod, "GET")
         XCTAssertEqual(urlRequest?.value(forHTTPHeaderField: "Content-Type"), "application/json")
         XCTAssertEqual(urlRequest?.url, URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=0")!)
@@ -169,7 +167,7 @@ final class MealServiceTests: XCTestCase {
     }
     
     func test_meal_failedToFetchData() async throws {
-        let client = MockNetworkClient { _ in throw StubError() }
+        let client = MockNetworkClient { throw StubError() }
         let service = MealService(client: client)
         
         // Validate Error
@@ -183,7 +181,7 @@ final class MealServiceTests: XCTestCase {
     }
     
     func test_meal_noData() async throws {
-        let client = MockNetworkClient { _ in
+        let client = MockNetworkClient {
             return (
                 Data("{\"meals\": []}".utf8),
                 URLResponse()
@@ -202,7 +200,7 @@ final class MealServiceTests: XCTestCase {
     }
     
     func test_meal_failedToDecodeResponse() async throws {
-        let client = MockNetworkClient { _ in (Data(), URLResponse()) }
+        let client = MockNetworkClient { (Data(), URLResponse()) }
 
         let service = MealService(client: client)
         

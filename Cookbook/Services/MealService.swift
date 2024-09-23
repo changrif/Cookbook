@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MealProviding {
+protocol MealProviding: Sendable {
     func mealList(for category: String) async throws -> [MealListItem]
     func meal(from id: String) async throws -> Meal
 }

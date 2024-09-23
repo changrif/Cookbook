@@ -18,16 +18,18 @@ final class MealDetailViewModelTests: XCTestCase {
     }
 
     // MARK: - Load
-    
+
+    @MainActor
     func test_load() async throws {
         let service = MockMealService()
         let viewModel = MealDetailViewModel("0", service)
-        
+
         await viewModel.load()
-        
+
         XCTAssertEqual(viewModel.state, .complete(Meal.stub))
     }
-    
+
+    @MainActor
     func test_load_error() async throws {
         let service = MockMealService(mockMeal: { _ in throw StubError() })
         let viewModel = MealDetailViewModel("0", service)

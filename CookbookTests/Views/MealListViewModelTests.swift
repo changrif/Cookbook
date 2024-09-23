@@ -19,7 +19,8 @@ final class MealListViewModelTests: XCTestCase {
     }
 
     // MARK: - Load
-    
+
+    @MainActor
     func test_load() async throws {
         let category = MealCategory(name: "Dessert")
         let service = MockMealService()
@@ -29,7 +30,8 @@ final class MealListViewModelTests: XCTestCase {
         
         XCTAssertEqual(viewModel.state, .complete([.stub]))
     }
-    
+
+    @MainActor
     func test_load_error() async throws {
         let category = MealCategory(name: "Dessert")
         let service = MockMealService(mockMealList: { _ in throw StubError() })

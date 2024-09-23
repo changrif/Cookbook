@@ -9,12 +9,12 @@ import Foundation
 @testable import Cookbook
 
 struct MockMealService: MealProviding {
-    let mockMealList: ((String) throws -> [Cookbook.MealListItem])?
-    let mockMeal: ((String) throws -> Cookbook.Meal)?
-    
+    let mockMealList: (@Sendable (String) throws -> [Cookbook.MealListItem])?
+    let mockMeal: (@Sendable (String) throws -> Cookbook.Meal)?
+
     init(
-        mockMealList: ((String) throws -> [Cookbook.MealListItem])? = nil,
-        mockMeal: ((String) throws -> Cookbook.Meal)? = nil
+        mockMealList: (@Sendable (String) throws -> [Cookbook.MealListItem])? = nil,
+        mockMeal: (@Sendable (String) throws -> Cookbook.Meal)? = nil
     ) {
         self.mockMealList = mockMealList
         self.mockMeal = mockMeal

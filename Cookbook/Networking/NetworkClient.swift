@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NetworkClient {
+protocol NetworkClient: Sendable {
     func fetchData(for request: URLRequest) async throws -> (Data, URLResponse)
 }
 
