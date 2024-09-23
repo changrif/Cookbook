@@ -22,9 +22,13 @@ final class MealServiceTests: XCTestCase {
                 {
                     "meals": [
                         {
-                            "idMeal": "0",
-                            "strMeal": "Dessert"
-                        }
+                            "idMeal": "1",
+                            "strMeal": "Cherry Pie"
+                        },
+                        {
+                            "idMeal": "2",
+                            "strMeal": "Apple Pie"
+                        },
                     ]
                 }
                 """.utf8),
@@ -41,8 +45,11 @@ final class MealServiceTests: XCTestCase {
         XCTAssertEqual(urlRequest?.url, URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert")!)
         XCTAssertEqual(urlRequest?.cachePolicy, .returnCacheDataElseLoad)
 
-        // Validate Model
-        XCTAssertEqual(actual, [MealListItem(id: "0", name: "Dessert")])
+        // Validate Model (in sorted order)
+        XCTAssertEqual(actual, [
+            MealListItem(id: "2", name: "Apple Pie"),
+            MealListItem(id: "1", name: "Cherry Pie"),
+        ])
     }
     
     func test_mealList_failedToFetchData() async throws {
