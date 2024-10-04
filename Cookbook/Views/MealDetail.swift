@@ -78,10 +78,12 @@ struct MealDetail: View {
     }
 }
 
-#Preview {
-    NavigationView {
-        MealDetail.Content(meal: .preview)
-            .padding()
+struct MealDetail_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            MealDetail.Content(meal: .preview)
+                .padding()
+        }
+        .navigationViewStyle(.stack)
     }
-    .navigationViewStyle(.stack)
 }
